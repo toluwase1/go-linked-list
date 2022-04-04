@@ -131,7 +131,14 @@ func (l *LinkedList) DeleteVal(val int) error {
 	return errors.New("Node not found")
 }
 
-
+func (l *LinkedList) Prepend(val int) {
+	newNode := &Node{value: val}
+	if l.head == nil {
+		l.head = newNode
+	}
+	newNode.next = l.head
+	l.head = newNode
+}
 
 func main()  {
 	l := LinkedList{}
