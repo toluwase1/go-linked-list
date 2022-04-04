@@ -130,7 +130,7 @@ func (l *LinkedList) DeleteVal(val int) error {
 	fmt.Println("Node not found")
 	return errors.New("Node not found")
 }
-
+///check well
 func (l *LinkedList) Prepend(val int) {
 	newNode := &Node{value: val}
 	if l.head == nil {
@@ -138,6 +138,26 @@ func (l *LinkedList) Prepend(val int) {
 	}
 	newNode.next = l.head
 	l.head = newNode
+}
+// InsertAt Insert a node after a given node
+func (l *LinkedList) InsertAt(val int, pos int) {
+	// 10 2 3 : 1 => 10, 15, 2, 3
+	newNode := &Node{value: val}
+	if pos == 0 {
+		newNode.next = l.head
+		l.head = newNode
+	}
+	count := 0
+	current := l.head
+	for current != nil {
+		if count == pos-1 {
+			newNode.next = current.next
+			current.next = newNode
+			break
+		}
+		count++
+		current = current.next
+	}
 }
 
 func main()  {
